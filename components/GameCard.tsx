@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { type GameInfo } from '../lib/games';
 import { Puzzle, Zap, Spade, Type, Brain } from 'lucide-react';
@@ -30,24 +31,19 @@ export default function GameCard({ game }: { game: GameInfo }) {
     >
       <div
         style={{
-          height: 140,
-          background: `linear-gradient(135deg, ${game.color}33, ${game.color}11)`,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          height: 160,
+          position: 'relative',
+          overflow: 'hidden',
           borderBottom: `2px solid ${game.color}44`,
         }}
       >
-        <span
-          style={{
-            fontSize: 36,
-            fontWeight: 800,
-            color: game.color,
-            letterSpacing: -1,
-          }}
-        >
-          {game.name}
-        </span>
+        <Image
+          src={`/covers/${game.slug}.png`}
+          alt={game.name}
+          fill
+          sizes="(max-width: 600px) 100vw, 280px"
+          style={{ objectFit: 'cover' }}
+        />
       </div>
       <div style={{ padding: '14px 16px' }}>
         <div
